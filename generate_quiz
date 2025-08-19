@@ -1,0 +1,12 @@
+async def generate_quiz(topic: str) -> dict:
+    """Gemini API का उपयोग करके हिंदी में क्विज़ जनरेट करें."""
+    prompt = f"""..."""
+    try:
+        response = model.generate_content(prompt)
+        print("Gemini API से मिला जवाब:", response.text)  # यह लाइन जोड़ें
+        quiz_data_str = response.text.replace("```json", "").replace("```", "").strip()
+        quiz_data = json.loads(quiz_data_str)
+        return quiz_data
+    except Exception as e:
+        logging.error(f"Failed to generate quiz: {e}")
+        return None
